@@ -61,15 +61,18 @@ def publish(
     recid = published.get("record_id") or published.get("id")
     doi = published.get("doi")
 
-    # File info: Zenodo returns checksums for files; normalize into registry format
+    # File info: use local filenames as the source of truth.
+    # Zenodo's publish response may not reliably include "filename" immediately.
     files_entry = []
-    for f in published.get("files", []):
+    local_names = [fp.name for fp in files]
+    for local_name, f in zip(local_names, published.get("files", [])):
+        links = f.get("links", {}) or {}
         files_entry.append(
             {
-                "name": f.get("filename"),
+                "name": local_name,
                 "checksum": f.get("checksum"),
-                "size": f.get("filesize"),
-                "download_url": f.get("links", {}).get("self"),
+                "size": f.get("filesize") or f.get("size"),
+                "download_url": links.get("download") or links.get("self"),
             }
         )
 
