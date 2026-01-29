@@ -2,7 +2,7 @@
 
 `cogs-archive` is the official tooling and registry for publishing, managing, and accessing research datasets produced by the **Center for Open Geographical Science (COGS)**.
 
-Datasets are archived on **Zenodo**, assigned **DOIs**, and curated through the **COGS Zenodo community** to support **reproducibility, citation, and long-term access**.
+Datasets are archived on **Zenodo**, assigned **DOIs**, and curated through the **[COGS Zenodo community](https://zenodo.org/communities/cogs/records?q=&l=list&p=1&s=10&sort=newest)** to support **reproducibility, citation, and long-term access**.
 
 ---
 
